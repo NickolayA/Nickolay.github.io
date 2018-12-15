@@ -1,0 +1,21 @@
+@startuml
+class App << (C,blue) Component>> {
+    ==methods==
+    +render()
+}
+
+App *-- Redux
+
+class Redux << (P,yellow) Provider>> {
+    ~store
+}
+
+class AppNavBar <<(C,blue) Component>>{
+    ==methods==
+    +getDerivedStateFromProps()
+    +onLogoutClick()
+}
+
+Redux *-- AppNavBar
+
+@enduml

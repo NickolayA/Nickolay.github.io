@@ -6,7 +6,7 @@ import { firebaseConnect } from "react-redux-firebase";
 import { notifyUser } from "../../actions/notifyActions";
 import Alert from "../layout/Alert";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     email: "",
     password: ""
@@ -32,7 +32,7 @@ class Login extends Component {
         email,
         password
       })
-      .catch(err => notifyUser("That User Already Exists", "error"));
+      .catch(err => notifyUser(err.message, "error"));
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -89,7 +89,7 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+Register.propTypes = {
   firebase: PropTypes.object.isRequired
 };
 
@@ -102,4 +102,4 @@ export default compose(
     }),
     { notifyUser }
   )
-)(Login);
+)(Register);
